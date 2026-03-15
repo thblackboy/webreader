@@ -14,6 +14,22 @@ claude mcp add webreader -- uvx --from git+https://github.com/thblackboy/webread
 
 First run downloads Playwright Chromium automatically (~170MB). After that everything works with no additional setup.
 
+## Disable built-in tools (recommended)
+
+By default Claude Code has its own `WebSearch` and `WebFetch` tools. To force Claude to use webreader instead, add a `.claude/settings.json` to your project:
+
+```bash
+mkdir -p .claude && cat > .claude/settings.json << 'EOF'
+{
+  "permissions": {
+    "deny": ["WebSearch", "WebFetch"]
+  }
+}
+EOF
+```
+
+This is per-project — it won't affect other projects.
+
 ## Usage
 
 Once installed, just ask Claude:
