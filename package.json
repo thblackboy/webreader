@@ -1,0 +1,18 @@
+{
+  "name": "webreader",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@mozilla/readability": "^0.6.0",
+    "jsdom": "^28.1.0",
+    "playwright": "^1.58.2",
+    "turndown": "^7.2.2",
+    "zod": "^4.3.6"
+  }
+}
