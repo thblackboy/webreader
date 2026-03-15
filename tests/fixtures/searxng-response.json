@@ -1,0 +1,23 @@
+{
+  "query": "test query",
+  "results": [
+    {
+      "title": "Example Result",
+      "url": "https://example.com",
+      "content": "This is the snippet text for the result.",
+      "engine": "google"
+    },
+    {
+      "title": "Second Result",
+      "url": "https://example.org",
+      "content": "Another snippet here.",
+      "engine": "bing"
+    },
+    {
+      "title": "Third Result",
+      "url": "https://example.net",
+      "content": "Yet another snippet.",
+      "engine": "duckduckgo"
+    }
+  ]
+}
