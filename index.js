@@ -58,7 +58,10 @@ server.tool(
 async function main() {
   browser = await chromium.launch();
 
+  let cleaningUp = false;
   const cleanup = async () => {
+    if (cleaningUp) return;
+    cleaningUp = true;
     await browser.close();
     process.exit(0);
   };
@@ -70,6 +73,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error(err);
+  console.error(err.stack ?? err.message ?? err);
   process.exit(1);
 });
