@@ -30,6 +30,8 @@ async def _fetch_with_httpx(url: str) -> str:
 
 
 def _extract(html: str, url: str) -> dict:
+    from bs4 import BeautifulSoup
+
     meta = trafilatura.extract_metadata(html, default_url=url)
     title = meta.title if meta and meta.title else ""
 
@@ -40,6 +42,18 @@ def _extract(html: str, url: str) -> dict:
         include_links=False,
         output_format="markdown",
     )
+
+    # Fallback for JS-heavy pages (anime sites, SPAs, etc.)
+    # where trafilatura finds no article-like content
+    if not markdown:
+        soup = BeautifulSoup(html, "html.parser")
+        for tag in soup(["script", "style", "nav", "footer", "head"]):
+            tag.decompose()
+        text = soup.get_text(separator="\n", strip=True)
+        # Collapse excessive blank lines
+        lines = [l for l in text.splitlines() if l.strip()]
+        markdown = "\n".join(lines)
+
     if not markdown:
         raise ValueError("Could not extract readable content from page")
 
