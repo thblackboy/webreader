@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "webreader"
+version = "0.1.0"
+description = "Local MCP server for web search and reading — no API keys, no limits"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.0.0",
+    "duckduckgo-search>=6.0.0",
+    "playwright>=1.40.0",
+    "trafilatura>=1.12.0",
+    "httpx>=0.27.0",
+]
+
+[project.scripts]
+webreader = "webreader.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/webreader"]
