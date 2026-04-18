@@ -9,6 +9,7 @@ Local MCP server for web search and reading — no API keys, no limits.
 ## Install in Claude Code
 
 ```bash
+uvx --from git+https://github.com/thblackboy/webreader playwright install-deps chromium 
 claude mcp add webreader -- uvx --from git+https://github.com/thblackboy/webreader webreader
 ```
 
